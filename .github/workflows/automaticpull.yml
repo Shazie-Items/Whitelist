@@ -23,7 +23,7 @@ jobs:
 
       - name: Check for Changes and Push
         run: |
-          git add Test.txt
+          git add Whitelist2.txt
           git diff --cached --quiet && exit 0  # Exit if no changes
           git commit -m "Auto-sync Test.txt from Repo A"
           git push
