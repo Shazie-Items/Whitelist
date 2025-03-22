@@ -12,13 +12,16 @@ jobs:
       - name: Checkout Repo B (This Repository)
         uses: actions/checkout@v3
 
+      - name: Print current date and time
+        run: date  # Debugging step to check the run time
+
       - name: Fetch File from Repo A
         run: |
-          curl -sSf -o Test.txt https://raw.githubusercontent.com/Shazie-Items/Whitelist/main/Test.txt
+          curl -sSf -o SCWhitelist.txt https://raw.githubusercontent.com/Stalker-Classic/SCWhitelist/main/SCWhitelist.txt
 
-      - name: Replace Content of Whitelist2.txt with Test.txt
+      - name: Replace Content of Whitelist2.txt with SCWhitelist.txt
         run: |
-          cp Test.txt Whitelist2.txt  # Replace Whitelist2.txt content with Test.txt
+          cp SCWhitelist.txt Whitelist2.txt  # Replace Whitelist2.txt content with SCWhitelist.txt
 
       - name: Configure Git User
         run: |
@@ -30,6 +33,5 @@ jobs:
           git remote set-url origin https://github-actions:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/Shazie-Items/Whitelist.git
           git add Whitelist2.txt
           git diff --cached --quiet && exit 0  # Exit if no changes
-          git commit -m "Auto-sync Whitelist2.txt with Test.txt from Repo A"
+          git commit -m "Auto-sync Whitelist2.txt with SCWhitelist.txt from Repo A"
           git push
-
