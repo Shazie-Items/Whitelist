@@ -2,7 +2,7 @@ name: Sync File from Repo A
 
 on:
   schedule:
-    - cron: '*/2 * * * *'  # Runs every 2 minutes
+    - cron: '*/5 * * * *'  # Runs every 5 minutes
   workflow_dispatch:  # Allows manual trigger from GitHub
 
 jobs:
@@ -35,3 +35,4 @@ jobs:
           git diff --cached --quiet && exit 0  # Exit if no changes
           git commit -m "Auto-sync Whitelist2.txt with SCWhitelist.txt from Repo A"
           git push
+
