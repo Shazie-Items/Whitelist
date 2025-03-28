@@ -19,9 +19,9 @@ jobs:
         run: |
           curl -sSf -o SCWhitelist.txt https://raw.githubusercontent.com/Stalker-Classic/SCWhitelist/main/SCWhitelist.txt
 
-      - name: Replace Content of Whitelist2.txt with SCWhitelist.txt
+      - name: Replace Content of Whitelist.txt with SCWhitelist.txt
         run: |
-          cp SCWhitelist.txt Whitelist2.txt  # Replace Whitelist2.txt content with SCWhitelist.txt
+          cp SCWhitelist.txt Whitelist.txt  # Replace Whitelist.txt content with SCWhitelist.txt
 
       - name: Configure Git User
         run: |
@@ -31,8 +31,8 @@ jobs:
       - name: Authenticate and Push Changes with PAT
         run: |
           git remote set-url origin https://github-actions:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/Shazie-Items/Whitelist.git
-          git add Whitelist2.txt
+          git add Whitelist.txt
           git diff --cached --quiet && exit 0  # Exit if no changes
-          git commit -m "Auto-sync Whitelist2.txt with SCWhitelist.txt from Repo A"
+          git commit -m "Auto-sync Whitelist.txt with SCWhitelist.txt from Repo A"
           git push
 
